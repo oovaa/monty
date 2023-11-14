@@ -13,7 +13,7 @@
 
 int match(stack_t **head, char **arg, int line_number)
 {
-	void (*f)(stack_t **stack, unsigned int line_number);
+	int i;
 	instruction_t inst[] = {
 		{"push", push}, {NULL, NULL}
 	};

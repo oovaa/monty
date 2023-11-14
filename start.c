@@ -24,13 +24,14 @@ int main(int ac, char **av)
 	while (input_str)
 	{
 		count++;
-		arg = toker(input_str);
+		arg = toker(input_str, stream);
 		/* comment out later */
 		if (arg[0] != NULL)
 		{
 			match = match(&head, arg, count);
 			if (!match)
 			{
+				fclose(stream);
 				free(input_str);
 				free(arg);
 				free_stack(head);
@@ -42,6 +43,7 @@ int main(int ac, char **av)
 		free(arg);
 		input_str = readfile(stream);
 	}
+	fclose(stream);
 	exiting(head);
 	return (0);
 }

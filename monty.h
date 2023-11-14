@@ -3,9 +3,17 @@
 
 extern stack_t tail;
 
-/* file.c */
+/* --------------- file.c --------------- */
 FILE *openFile(int argc, char *filename);
+char *readfile(FILE *stream);
+char **toker(char *str, FILE *stream);
 
+/* --------------- match.c --------------- */
+int match(stack_t **head, char **arg, int line_number);
+void exiting(stack_t *head);
+
+/* --------------- dll.c --------------- */
+void free_stack(stack_t *head);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -47,6 +47,7 @@ char *readfile(FILE *stream)
 
 	if (!str)
 	{
+		fclose(stream);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
@@ -67,11 +68,16 @@ char *readfile(FILE *stream)
  * Return: an array of tokens
  */
 
-char **toker(char *str)
+char **toker(char *str, FILE *stream)
 {
 	int i = 0;
 	char **arr = malloc(sizeof(*arr) * 10);
-
+	if (!arr)
+	{
+		fclose(stream);
+		fprintf(stderr, "USAGE: monty file");
+		exit(EXIT_FAILURE);
+	}
 	while (1)
 	{
 		if (i == 0)
