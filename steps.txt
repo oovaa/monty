@@ -1,0 +1,5 @@
+open file 
+read file
+clean the commands
+excute line by line
+
