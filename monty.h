@@ -8,8 +8,6 @@
 #include <ctype.h>
 #include <unistd.h>
 
-
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -26,47 +24,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-
-/**
- * struct global_s - Structure representing global variables.
- * @first: A pointer to the first node of the doubly linked list.
- * @stream: A pointer to the file stream.
- * @av: An array of strings representing command-line arguments.
- *
- * Description: This structure holds global variables that are used
- * across different parts of the program.
- */
-typedef struct global_s 
-{
-	stack_t **first;
-	FILE *stream;
-	char **av;
-	int isStack;
-} global_t;
-
-extern global_t global;
-
-/* --------------- file.c --------------- */
-FILE *openFile(int argc, char *filename);
-char *readfile(FILE *stream);
-char **toker(char *str, FILE *stream);
-
-/* --------------- match.c --------------- */
-int match(stack_t **head, char **arg, int line_number);
-void exiting(stack_t *head);
-
-/* --------------- dll.c --------------- */
-void free_stack(stack_t *head);
-
-/* freethething */
-void freeAll_and_exit(FILE *stream, char *input_str , char **arg, stack_t *head);
-
-/* push */
-void push(stack_t **full_command, unsigned int line_number);
-void add_node(stack_t **head, int val);
-
-
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -80,5 +37,43 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+/**
+ * struct global_s - Structure representing global variables.
+ * @first: A pointer to the first node of the doubly linked list.
+ * @stream: A pointer to the file stream.
+ * @av: An array of strings representing command-line arguments.
+ *
+ * Description: This structure holds global variables that are used
+ * across different parts of the program.
+ */
+typedef struct global_s 
+{
+	stack_t **tail;
+	FILE *stream;
+	char **arg;
+	char *str;
+	int isStack;
+} global_t;
+
+extern global_t global;
+
+/* --------------- file.c --------------- */
+FILE *openFile(int argc, char *filename);
+char *readfile(FILE *stream);
+char **toker(char *str, FILE *stream);
+
+/* --------------- match.c --------------- */
+int match(stack_t **head, char **arg, int line_number);
+void exiting(stack_t *head);
+void freeAll_and_exit(stack_t *head);
+
+/* --------------- dll.c --------------- */
+void free_stack(stack_t *head);
+
+/* push */
+void push(stack_t **head, unsigned int line_number);
+void add_node(stack_t **head, int val);
+void pall(stack_t **head, unsigned int line_number __attribute__((unused)));
 
 #endif

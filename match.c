@@ -1,4 +1,3 @@
-
 #include "monty.h"
 
 /**
@@ -14,8 +13,7 @@ int match(stack_t **head, char **arg, int line_number)
 {
 	int i;
 	instruction_t inst[] ={
-	{"push", push},
-	{NULL, NULL}
+	{"push", push}, {"pall", pall}, {NULL, NULL}
 	};
 
 	/* type casting can be made if a function has an additional parameter */
@@ -38,9 +36,25 @@ int match(stack_t **head, char **arg, int line_number)
  * Return: Nothing.
  */
 
-void exiting(stack_t *head)
+void safe_exit(stack_t *head)
 {
 	free_stack(head);
 	head = NULL;
 	exit(EXIT_SUCCESS);
+}
+
+/**
+ * freeAll_and_exit - frees all the allocated memory in cases of failure and exits
+ * @n
+ *
+ * Return: Nothing.
+ */
+void freeAll_and_exit(stack_t *head)
+{
+	fclose(global.stream);
+	free(global.str);
+	free(global.arg);
+	free_stack(head);
+	head = NULL;
+	exit(EXIT_FAILURE);
 }

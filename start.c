@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-global_t global = {NULL, NULL, NULL, 0};
+global_t global = {NULL, NULL, NULL, NULL, 0};
 
 /*
  * main - Entry point for the program
@@ -17,24 +17,31 @@ int main(int ac, char **av) {
 	int isMatch = 0, line_number = 0;
 	FILE *stream;
 	stack_t *head = NULL;
+	stack_t *tail = NULL;
 
-	global.stream = stream;
-	global.isStack = 1;
 	stream = openFile(ac, av[1]);
 	input_str = readfile(stream);
+	/* the structure packing */
+	global.stream = stream;
+	global.str = input_str;
+	global.tail = &tail;
+	global.isStack = 1;
 
-	while (input_str) {
-	line_number++;
-	arg = toker(input_str, stream);
-	global.av = arg;
-	if (arg[0] != NULL) {
-		isMatch = match(&head, arg, line_number);
-		if (!isMatch)
-		freeAll_and_exit(stream, input_str, arg, head);
-	}
-	free(input_str);
-	free(arg);
-	input_str = readfile(stream);
+	while (input_str)
+	{
+		line_number++;
+		arg = toker(input_str, stream);
+		global.arg = arg;
+		if (arg[0] != NULL)
+		{
+			isMatch = match(&head, arg, line_number);
+			if (!isMatch)
+				freeAll_and_exit(head);
+		}
+		free(input_str);
+		free(arg);
+		input_str = readfile(stream);
+		global.str = input_str;
 	}
 	fclose(stream);
 	exiting(head);
