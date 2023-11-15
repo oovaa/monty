@@ -76,4 +76,8 @@ void push(stack_t **head, unsigned int line_number);
 void add_node(stack_t **head, int val);
 void pall(stack_t **head, unsigned int line_number __attribute__((unused)));
 
+/* pint */
+void pint(stack_t **head, unsigned int line_number);
+
+
 #endif

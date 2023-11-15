@@ -30,7 +30,7 @@ FILE *openFile(int argc, char *filename)
     stream = fdopen(fd, "r");
     if (stream == NULL)
     {
-        close(fd);  // Close the file descriptor if fdopen fails
+        close(fd);
         fprintf(stderr, "Error: Unable to open file stream\n");
         exit(EXIT_FAILURE);
     }
@@ -109,14 +109,12 @@ int main(int argc, char *argv[])
     char *filename = argv[1];
     FILE *stream = openFile(argc, filename);
 
-    // Test reading from the file stream
     char *line;
     while ((line = readfile(stream)) != NULL)
     {
         printf("%s\n", line);
     }
 
-    // Close the file stream when done
     fclose(stream);
 
     return 0;

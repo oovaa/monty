@@ -31,7 +31,6 @@ void add_node(stack_t **head, int val)
 	newNode->prev = NULL;
 	newNode->next = NULL;
 
-	// If the list is empty, the new node becomes the head
 	if (*head == NULL)
 	{
 		*head = newNode;
