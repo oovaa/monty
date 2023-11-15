@@ -12,8 +12,15 @@ void push(stack_t **head, unsigned int line_number)
 	char *val_str = gGlobal.arg[1];
 	int i, val;
 
+	if (!val_str)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		freeAll_and_exit(*head);
+	}
 	for (i = 0; val_str[i]; i++)
 	{
+		if (i == 0 && val_str[i] == '-')
+			continue;
 		if (!isdigit(val_str[i]))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
