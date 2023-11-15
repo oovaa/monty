@@ -44,6 +44,6 @@ int main(int ac, char **av) {
 		global.str = input_str;
 	}
 	fclose(stream);
-	exiting(head);
+	safe_exit(head);
 	return (0);
 }

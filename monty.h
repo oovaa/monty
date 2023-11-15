@@ -1,6 +1,5 @@
 #ifndef MONTY_H
 #define MONTY_H
-
 #include <stdlib.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -65,7 +64,7 @@ char **toker(char *str, FILE *stream);
 
 /* --------------- match.c --------------- */
 int match(stack_t **head, char **arg, int line_number);
-void exiting(stack_t *head);
+void safe_exit(stack_t *head);
 void freeAll_and_exit(stack_t *head);
 
 /* --------------- dll.c --------------- */

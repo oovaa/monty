@@ -17,9 +17,9 @@ int match(stack_t **head, char **arg, int line_number)
 	};
 
 	/* type casting can be made if a function has an additional parameter */
-	for (i = 0; i < 1; i++)
+	for (i = 0; i < 2; i++)
 	{
-		if (strcmp(arg[0], inst[i].opcode))
+		if (strcmp(arg[0], inst[i].opcode) == 0)
 		{
 			inst[i].f(head, line_number);
 			return (1);

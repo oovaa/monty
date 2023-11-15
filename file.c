@@ -1,4 +1,4 @@
-#include <stdio.h>
+#define _GNU_SOURCE
 #include "monty.h"
 
 /**
@@ -8,29 +8,18 @@
  *
  * Return: a file pointer to the stream
  */
-
 FILE *openFile(int argc, char *filename)
 {
     FILE *stream;
-    int fd = 0;
 
     if (argc != 2)
     {
         fprintf(stderr, "USAGE: monty file\n");
         exit(EXIT_FAILURE);
     }
-
-    fd = open(filename, O_RDONLY);
-    if (fd == -1)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", filename);
-        exit(EXIT_FAILURE);
-    }
-
-    stream = fdopen(fd, "r");
+    stream = fopen(filename, "r");
     if (stream == NULL)
     {
-        close(fd);
         fprintf(stderr, "Error: Unable to open file stream\n");
         exit(EXIT_FAILURE);
     }
