@@ -1,3 +1,5 @@
+push -8
+push -3
 sub
-pint
+pall
 

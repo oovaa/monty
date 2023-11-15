@@ -10,15 +10,11 @@
 
 void sub(stack_t **head, unsigned int line_number)
 {
-	int value;
-
-	if (*head && *head != *gGlobal.tail)
+	if (!(*head) ||  *head == *gGlobal.tail)
 	{
-		value = (*head)->n;
-		pop(head, line_number);
-		(*head)->n -= value;
-		return;
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+		freeAll_and_exit(*head);
 	}
-	fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
-	freeAll_and_exit(*head);
+	(*head)->next->n -= (*head)->n;
+	pop(head, line_number);
 }
