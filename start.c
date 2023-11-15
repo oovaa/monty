@@ -1,8 +1,8 @@
+#include "monty.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "monty.h"
 
-stack_t *tail = NULL;
+global_t global = {NULL, NULL, NULL, 0};
 
 /*
  * main - Entry point for the program
@@ -11,37 +11,30 @@ stack_t *tail = NULL;
  *
  * Return: Always 0 (Success)
  */
-int main(int ac, char **av)
-{
-	char *input_str = NULL;
-	char **arg = NULL;
-	int match = 0, count = 0;
+
+int main(int ac, char **av) {
+	char *input_str = NULL, **arg = NULL;
+	int isMatch = 0, line_number = 0;
 	FILE *stream;
 	stack_t *head = NULL;
 
+	global.stream = stream;
+	global.isStack = 1;
 	stream = openFile(ac, av[1]);
 	input_str = readfile(stream);
-	while (input_str)
-	{
-		count++;
-		arg = toker(input_str, stream);
-		/* comment out later */
-		if (arg[0] != NULL)
-		{
-			match = match(&head, arg, count);
-			if (!match)
-			{
-				fclose(stream);
-				free(input_str);
-				free(arg);
-				free_stack(head);
-				head = NULL;
-				exit(EXIT_FAILURE);
-			}
-		}
-		free(input_str);
-		free(arg);
-		input_str = readfile(stream);
+
+	while (input_str) {
+	line_number++;
+	arg = toker(input_str, stream);
+	global.av = arg;
+	if (arg[0] != NULL) {
+		isMatch = match(&head, arg, line_number);
+		if (!isMatch)
+		freeAll_and_exit(stream, input_str, arg, head);
+	}
+	free(input_str);
+	free(arg);
+	input_str = readfile(stream);
 	}
 	fclose(stream);
 	exiting(head);
