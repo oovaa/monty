@@ -78,5 +78,7 @@ void pall(stack_t **head, unsigned int line_number __attribute__((unused)));
 /* pint */
 void pint(stack_t **head, unsigned int line_number);
 
+/* swap */
+void swap(stack_t **head, unsigned int line_number);
 
 #endif

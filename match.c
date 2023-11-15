@@ -13,11 +13,13 @@ int match(stack_t **head, char **arg, int line_number)
 {
 	int i;
 	instruction_t inst[] ={
-	{"push", push}, {"pall", pall}, {NULL, NULL}
+	{"push", push}, {"pall", pall},
+	{"pint", pint},
+	{"swap", swap}, {NULL, NULL}
 	};
 
 	/* type casting can be made if a function has an additional parameter */
-	for (i = 0; i < 2; i++)
+	for (i = 0; inst[i].opcode; i++)
 	{
 		if (strcmp(arg[0], inst[i].opcode) == 0)
 		{
