@@ -13,8 +13,9 @@
 int match(stack_t **head, char **arg, int line_number)
 {
 	int i;
-	instruction_t inst[] = {
-		{"push", push}, {NULL, NULL}
+	instruction_t inst[] ={
+	{"push", push},
+	{NULL, NULL}
 	};
 
 	/* type casting can be made if a function has an additional parameter */

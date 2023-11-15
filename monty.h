@@ -1,19 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-extern stack_t tail;
+#include <stdlib.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <unistd.h>
 
-/* --------------- file.c --------------- */
-FILE *openFile(int argc, char *filename);
-char *readfile(FILE *stream);
-char **toker(char *str, FILE *stream);
 
-/* --------------- match.c --------------- */
-int match(stack_t **head, char **arg, int line_number);
-void exiting(stack_t *head);
-
-/* --------------- dll.c --------------- */
-void free_stack(stack_t *head);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -30,6 +25,46 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
+
+/**
+ * struct global_s - Structure representing global variables.
+ * @first: A pointer to the first node of the doubly linked list.
+ * @stream: A pointer to the file stream.
+ * @av: An array of strings representing command-line arguments.
+ *
+ * Description: This structure holds global variables that are used
+ * across different parts of the program.
+ */
+typedef struct global_s 
+{
+	stack_t **first;
+	FILE *stream;
+	char **av;
+	int isStack;
+} global_t;
+
+extern global_t global;
+
+/* --------------- file.c --------------- */
+FILE *openFile(int argc, char *filename);
+char *readfile(FILE *stream);
+char **toker(char *str, FILE *stream);
+
+/* --------------- match.c --------------- */
+int match(stack_t **head, char **arg, int line_number);
+void exiting(stack_t *head);
+
+/* --------------- dll.c --------------- */
+void free_stack(stack_t *head);
+
+/* freethething */
+void freeAll_and_exit(FILE *stream, char *input_str , char **arg, stack_t *head);
+
+/* push */
+void push(stack_t **full_command, unsigned int line_number);
+void add_node(stack_t **head, int val);
+
 
 
 /**
