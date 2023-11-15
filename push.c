@@ -19,7 +19,7 @@ void push(stack_t **head, unsigned int line_number)
 	}
 	for (i = 0; val_str[i]; i++)
 	{
-		if (i == 0 && val_str[i] == '-')
+		if ((i == 0 && val_str[i] == '-') || val_str[i] == '.')
 			continue;
 		if (!isdigit(val_str[i]))
 		{
