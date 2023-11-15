@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+
 #include "monty.h"
 
 /**
@@ -23,12 +22,12 @@ int match(stack_t **head, char **arg, int line_number)
 	{
 		if (strcmp(arg[0], inst[i].opcode))
 		{
-			inst[i].f(head, count);
+			inst[i].f(head, line_number);
 			return (1);
 		}
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, arg[0]);
-	return (-1);
+	return (0);
 }
 
 /**
