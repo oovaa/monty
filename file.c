@@ -10,21 +10,20 @@
  */
 FILE *openFile(int argc, char *filename)
 {
-    FILE *stream;
+	FILE *stream;
 
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-    stream = fopen(filename, "r");
-    if (stream == NULL)
-    {
-        fprintf(stderr, "Error: Unable to open file stream\n");
-        exit(EXIT_FAILURE);
-    }
-
-    return stream;
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	stream = fopen(filename, "r");
+	if (stream == NULL)
+	{
+		fprintf(stderr, "Error: Unable to open file stream\n");
+		exit(EXIT_FAILURE);
+	}
+	return (stream);
 }
 
 /**
@@ -59,6 +58,7 @@ char *readfile(FILE *stream)
 /**
  * toker - tokonizes a string
  * @str: the string to be tokanized
+ * @stream: the file pointer
  *
  * Return: an array of tokens
  */
@@ -68,6 +68,7 @@ char **toker(char *str, FILE *stream)
 	int i = 0;
 	int capacity = 100;
 	char **arr = malloc(sizeof(*arr) * capacity);
+
 	if (!arr)
 	{
 		fclose(stream);
@@ -86,27 +87,3 @@ char **toker(char *str, FILE *stream)
 	}
 	return (arr);
 }
-
-/* 
-int main(int argc, char *argv[])
-{
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: %s file\n", argv[0]);
-        exit(EXIT_FAILURE);
-    }
-
-    char *filename = argv[1];
-    FILE *stream = openFile(argc, filename);
-
-    char *line;
-    while ((line = readfile(stream)) != NULL)
-    {
-        printf("%s\n", line);
-    }
-
-    fclose(stream);
-
-    return 0;
-}
- */

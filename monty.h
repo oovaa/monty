@@ -55,7 +55,7 @@ typedef struct global_s
 	int isStack;
 } global_t;
 
-extern global_t global;
+extern global_t gGlobal;
 
 /* --------------- file.c --------------- */
 FILE *openFile(int argc, char *filename);

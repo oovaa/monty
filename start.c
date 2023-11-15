@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-global_t global = {NULL, NULL, NULL, NULL, 0};
+global_t gGlobal = {NULL, NULL, NULL, NULL, 0};
 
-/*
+/**
  * main - Entry point for the program
  * @ac: The number of command-line arguments
  * @av: An array of strings representing the command-line arguments
@@ -12,7 +12,8 @@ global_t global = {NULL, NULL, NULL, NULL, 0};
  * Return: Always 0 (Success)
  */
 
-int main(int ac, char **av) {
+int main(int ac, char **av)
+{
 	char *input_str = NULL, **arg = NULL;
 	int isMatch = 0, line_number = 0;
 	FILE *stream;
@@ -22,17 +23,17 @@ int main(int ac, char **av) {
 	stream = openFile(ac, av[1]);
 	input_str = readfile(stream);
 	/* the structure packing */
-	global.stream = stream;
-	global.str = input_str;
-	global.tail = &tail;
-	global.isStack = 1;
+	gGlobal.stream = stream;
+	gGlobal.str = input_str;
+	gGlobal.tail = &tail;
+	gGlobal.isStack = 1;
 
 	while (input_str)
 	{
 		line_number++;
 		printf("line num -%d- \n", line_number);
 		arg = toker(input_str, stream);
-		global.arg = arg;
+		gGlobal.arg = arg;
 		if (arg[0] != NULL)
 		{
 			isMatch = match(&head, arg, line_number);
@@ -42,7 +43,7 @@ int main(int ac, char **av) {
 		free(input_str);
 		free(arg);
 		input_str = readfile(stream);
-		global.str = input_str;
+		gGlobal.str = input_str;
 	}
 	fclose(stream);
 	safe_exit(head);

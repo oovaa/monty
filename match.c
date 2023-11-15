@@ -12,7 +12,7 @@
 int match(stack_t **head, char **arg, int line_number)
 {
 	int i;
-	instruction_t inst[] ={
+	instruction_t inst[] = {
 	{"push", push}, {"pall", pall},
 	{"pint", pint},
 	{"swap", swap}, {NULL, NULL}
@@ -32,8 +32,8 @@ int match(stack_t **head, char **arg, int line_number)
 }
 
 /**
- * exiting - safe exit by freeing all the memory allocated in the stack
- * @head; a pointer to the head of the stack
+ * safe_exit - safe exit by freeing all the memory allocated in the stack
+ * @head: a pointer to the head of the stack
  *
  * Return: Nothing.
  */
@@ -46,16 +46,16 @@ void safe_exit(stack_t *head)
 }
 
 /**
- * freeAll_and_exit - frees all the allocated memory in cases of failure and exits
- * @n
+ * freeAll_and_exit - frees all allocated memory in cases of failure and exits
+ * @head: a pointer to the head of the stack
  *
  * Return: Nothing.
  */
 void freeAll_and_exit(stack_t *head)
 {
-	fclose(global.stream);
-	free(global.str);
-	free(global.arg);
+	fclose(gGlobal.stream);
+	free(gGlobal.str);
+	free(gGlobal.arg);
 	free_stack(head);
 	head = NULL;
 	exit(EXIT_FAILURE);
