@@ -30,6 +30,7 @@ int main(int ac, char **av) {
 	while (input_str)
 	{
 		line_number++;
+		printf("line num -%d- \n", line_number);
 		arg = toker(input_str, stream);
 		global.arg = arg;
 		if (arg[0] != NULL)

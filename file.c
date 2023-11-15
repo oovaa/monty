@@ -66,11 +66,12 @@ char *readfile(FILE *stream)
 char **toker(char *str, FILE *stream)
 {
 	int i = 0;
-	char **arr = malloc(sizeof(*arr) * 10);
+	int capacity = 100;
+	char **arr = malloc(sizeof(*arr) * capacity);
 	if (!arr)
 	{
 		fclose(stream);
-		fprintf(stderr, "USAGE: monty file");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	while (1)
