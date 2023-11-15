@@ -81,4 +81,7 @@ void pint(stack_t **head, unsigned int line_number);
 /* swap */
 void swap(stack_t **head, unsigned int line_number);
 
+/* pop */
+void pop(stack_t **head, unsigned int line_number);
+
 #endif
