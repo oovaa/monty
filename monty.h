@@ -87,4 +87,7 @@ void pop(stack_t **head, unsigned int line_number);
 /* add */
 void add(stack_t **head, unsigned int line_number);
 
+/* sub */
+void sub(stack_t **head, unsigned int line_number);
+
 #endif
