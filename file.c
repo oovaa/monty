@@ -1,7 +1,3 @@
-#include <fcntl.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "monty.h"
 
 /**
@@ -14,22 +10,31 @@
 
 FILE *openFile(int argc, char *filename)
 {
-	FILE *stream;
-	int fd = 0;
+    FILE *stream;
+    int fd = 0;
 
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file");
-		exit(EXIT_FAILURE);
-	}
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
-	stream = fdopen(fd, "r");
-	return (stream);
+    if (argc != 2)
+    {
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
+    }
+
+    fd = open(filename, O_RDONLY);
+    if (fd == -1)
+    {
+        fprintf(stderr, "Error: Can't open file %s\n", filename);
+        exit(EXIT_FAILURE);
+    }
+
+    stream = fdopen(fd, "r");
+    if (stream == NULL)
+    {
+        close(fd);  // Close the file descriptor if fdopen fails
+        fprintf(stderr, "Error: Unable to open file stream\n");
+        exit(EXIT_FAILURE);
+    }
+
+    return stream;
 }
 
 /**
@@ -90,3 +95,29 @@ char **toker(char *str, FILE *stream)
 	}
 	return (arr);
 }
+
+/* 
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        fprintf(stderr, "USAGE: %s file\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    char *filename = argv[1];
+    FILE *stream = openFile(argc, filename);
+
+    // Test reading from the file stream
+    char *line;
+    while ((line = readfile(stream)) != NULL)
+    {
+        printf("%s\n", line);
+    }
+
+    // Close the file stream when done
+    fclose(stream);
+
+    return 0;
+}
+ */
