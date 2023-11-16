@@ -96,5 +96,8 @@ void nop(stack_t **head, unsigned int line_number);
 /* div */
 void f_div(stack_t **head, unsigned int line_number);
 
+/* mod */
+void mod(stack_t **head, unsigned int line_number);
+
 
 #endif

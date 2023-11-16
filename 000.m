@@ -1,15 +1,17 @@
 
+mod
 push 10
 push 2
-div
+pint
+
 
 push 5
 push 2
-div
+mod
 pint
 
 push 20
-push 5
-div
+push 6
+mod
 
 pint
