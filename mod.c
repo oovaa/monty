@@ -16,7 +16,7 @@ void mod(stack_t **head, unsigned int line_number)
 		freeAll_and_exit(*head);
 	}
 
-	val = (*head)->next->n % (*head)->n;
+	val = (*head)->n % (*head)->next->n;
 
 	pop(head, line_number);
 
