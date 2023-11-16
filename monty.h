@@ -105,4 +105,7 @@ void mul(stack_t **head, unsigned int line_number);
 /* pchar */
 void pchar(stack_t **head, unsigned int line_number);
 
+/* pstr */
+void pstr(stack_t **head, unsigned int line_number);
+void pstr_t(stack_t *head);
 #endif
