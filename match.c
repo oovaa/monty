@@ -16,7 +16,9 @@ int match(stack_t **head, char **arg, int line_number)
 	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 	{"swap", swap}, {"add", add}, {"sub", sub}, {"nop", nop},
 	{"mul", mul}, {"div", f_div}, {"mod", mod}, {"pchar", pchar},
-	{"pstr", pstr}, {"rotr", rotr}, {"rotl", rotl}, {"stack", stack}, {"queue", queue}, {NULL, NULL}};
+	{"pstr", pstr}, {"rotr", rotr}, {"rotl", rotl}, {"stack", stack},
+	{"queue", queue}, {NULL, NULL}
+	};
 
 	for (i = 0; inst[i].opcode; i++)
 	{
@@ -50,6 +52,7 @@ void safe_exit(stack_t *head)
  *
  * Return: Nothing.
  */
+
 void freeAll_and_exit(stack_t *head)
 {
 	fclose(gGlobal.stream);

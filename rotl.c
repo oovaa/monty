@@ -8,21 +8,17 @@
 
 void rotl(stack_t **head, unsigned int line_number)
 {
-	stack_t *h;
-	stack_t *tt = *gGlobal.tail;
+	stack_t *tmp;
 
 	(void) line_number;
-	if ((*head) && *head != *gGlobal.tail)
+	if ((*head) && (*head)->next)
 	{
-		h = *head;
-		*head = (*head)->next;
-		h->next->prev = NULL;
-		h->next = NULL;
-
-		tt->next = h;
-		h->prev = tt;
-			
-		tt = h;
-
+		tmp = *head;
+		*head = tmp->next;
+		tmp->next->prev = NULL;
+		(*gGlobal.tail)->next = tmp;
+		tmp->next = NULL;
+		tmp->prev = *gGlobal.tail;
+		*gGlobal.tail = tmp;
 	}
 }
