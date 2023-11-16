@@ -33,7 +33,7 @@ int main(int ac, char **av)
 		line_number++;
 		arg = toker(input_str, stream);
 		gGlobal.arg = arg;
-		if (arg[0] != NULL)
+		if (arg[0] != NULL && arg[0][0] != '#')
 		{
 			isMatch = match(&head, arg, line_number);
 			if (!isMatch)

@@ -99,5 +99,7 @@ void f_div(stack_t **head, unsigned int line_number);
 /* mod */
 void mod(stack_t **head, unsigned int line_number);
 
+/* mul */
+void mul(stack_t **head, unsigned int line_number);
 
 #endif
