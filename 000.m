@@ -1,7 +1,6 @@
-push 10
-push 20
-push 30
-rotr
-rotr
-rotr
+queue
+push 15
+push 5
+sub
 pall
+

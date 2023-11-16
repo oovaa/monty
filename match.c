@@ -16,10 +16,10 @@ int match(stack_t **head, char **arg, int line_number)
 	{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 	{"swap", swap}, {"add", add}, {"sub", sub}, {"nop", nop},
 	{"mul", mul}, {"div", f_div}, {"mod", mod}, {"pchar", pchar},
-	{"pstr", pstr}, {"rotr", rotr},  {NULL, NULL}
+	{"pstr", pstr}, {"rotr", rotr}, {"stack", stack}, {"queue", queue},
+	{NULL, NULL}
 	};
 
-	/* type casting can be made if a function has an additional parameter */
 	for (i = 0; inst[i].opcode; i++)
 	{
 		if (strcmp(arg[0], inst[i].opcode) == 0)

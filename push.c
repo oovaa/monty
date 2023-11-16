@@ -28,7 +28,10 @@ void push(stack_t **head, unsigned int line_number)
 		}
 	}
 	val = atoi(val_str);
-	add_node(head, val);
+	if (gGlobal.isStack)
+		add_node(head, val);
+	else
+		add_node_at_end(head, val);
 }
 
 /**
@@ -65,6 +68,39 @@ void add_node(stack_t **head, int val)
 		newNode->next = *head;
 		*head = newNode;
 	}
+}
+
+/**
+ * add_node_at_end - adds a new node at the end of the list
+ * @head: a pointer to the head pf the list
+ * @val: the data to be inserted into the node
+ *
+ * Return: Nothing.
+ */
+
+void add_node_at_end(stack_t **head, int val)
+{
+	stack_t *new = malloc(sizeof(stack_t));
+
+	/* creating a new node */
+	if (!new)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		freeAll_and_exit(*head);
+	}
+	new->n = val;
+	new->prev = NULL;
+	new->next = NULL;
+
+	/* binding new node with the tail */
+	if (*gGlobal.tail)
+	{
+		(*gGlobal.tail)->next = new;
+		new->prev = *gGlobal.tail;
+	}
+	else
+		*head = new;
+	*gGlobal.tail = new;
 }
 
 /**

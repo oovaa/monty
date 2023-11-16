@@ -73,6 +73,7 @@ void free_stack(stack_t *head);
 /* push */
 void push(stack_t **head, unsigned int line_number);
 void add_node(stack_t **head, int val);
+void add_node_at_end(stack_t **head, int val);
 void pall(stack_t **head, unsigned int line_number __attribute__((unused)));
 
 /* pint */
@@ -111,4 +112,9 @@ void pstr_t(stack_t *head);
 
 /* rotr */
 void rotr(stack_t **head, unsigned int line_number);
+
+/* stack_queues */
+void queue(stack_t **head, unsigned int line_number);
+void stack(stack_t **head, unsigned int line_number);
+
 #endif
