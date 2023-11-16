@@ -20,7 +20,7 @@ FILE *openFile(int argc, char *filename)
 	stream = fopen(filename, "r");
 	if (stream == NULL)
 	{
-		fprintf(stderr, "Error: Unable to open file stream\n");
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	return (stream);

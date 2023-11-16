@@ -1,6 +1,3 @@
-queue
-push 15
-push 5
-sub
-pall
-
+I´m Bond, James Bond
+    push 007
+pall agente
