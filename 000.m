@@ -1,4 +1,8 @@
-push 20
-push 5
-mod
-pint
+pchar
+push 72
+pchar
+
+push 97
+pchar
+
+push 127
