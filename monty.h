@@ -93,6 +93,8 @@ void sub(stack_t **head, unsigned int line_number);
 /* nop */
 void nop(stack_t **head, unsigned int line_number);
 
+/* div */
+void f_div(stack_t **head, unsigned int line_number);
 
 
 #endif
