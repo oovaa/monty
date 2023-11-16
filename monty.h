@@ -108,4 +108,7 @@ void pchar(stack_t **head, unsigned int line_number);
 /* pstr */
 void pstr(stack_t **head, unsigned int line_number);
 void pstr_t(stack_t *head);
+
+/* rotr */
+void rotr(stack_t **head, unsigned int line_number);
 #endif
