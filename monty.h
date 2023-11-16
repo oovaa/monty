@@ -117,4 +117,7 @@ void rotr(stack_t **head, unsigned int line_number);
 void queue(stack_t **head, unsigned int line_number);
 void stack(stack_t **head, unsigned int line_number);
 
+/* rotl */
+void rotl(stack_t **head, unsigned int line_number);
+
 #endif
