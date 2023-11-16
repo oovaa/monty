@@ -1,8 +1,13 @@
-pchar
-push 72
-pchar
+push 10
+push 2
+div
+pint
 
-push 97
-pchar
+push 5
+push 1
+div
+pint
 
-push 127
+push 8
+div
+pint
