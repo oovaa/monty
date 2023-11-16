@@ -90,4 +90,9 @@ void add(stack_t **head, unsigned int line_number);
 /* sub */
 void sub(stack_t **head, unsigned int line_number);
 
+/* nop */
+void nop(stack_t **head, unsigned int line_number);
+
+
+
 #endif
